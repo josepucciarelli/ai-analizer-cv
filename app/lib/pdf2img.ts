@@ -53,7 +53,7 @@ export async function convertPdfToImage(
             canvas.toBlob(
                 (blob) => {
                     if (blob) {
-                        // Create a File from the blob with the same name as the pdf
+                        // Create a File from the blob with the same name as the PDF
                         const originalName = file.name.replace(/\.pdf$/i, "");
                         const imageFile = new File([blob], `${originalName}.png`, {
                             type: "image/png",

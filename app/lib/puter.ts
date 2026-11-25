@@ -1,5 +1,9 @@
 import { create } from "zustand";
 
+// Claude 3.7 Sonnet fue retirado el 19/02/2026: por eso el análisis dejó de funcionar.
+// Si este modelo se retira en el futuro, cambiá solo esta línea.
+export const AI_MODEL = "claude-sonnet-5-5";
+
 declare global {
     interface Window {
         puter: {
@@ -350,7 +354,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
                     ],
                 },
             ],
-            { model: "claude-3-7-sonnet" }
+            { model: AI_MODEL }
         ) as Promise<AIResponse | undefined>;
     };
 

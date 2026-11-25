@@ -29,9 +29,15 @@ export default function Home() {
 
       const resumes = (await kv.list('resume:*', true)) as KVItem[];
 
-      const parsedResumes = resumes?.map((resume) => (
-          JSON.parse(resume.value) as Resume
-      ))
+      // Ignora entradas rotas o sin análisis (las que quedaron cuando la IA falló)
+      const parsedResumes = (resumes || []).flatMap((resume) => {
+        try {
+          const r = JSON.parse(resume.value) as Resume;
+          return r?.feedback && typeof r.feedback === 'object' ? [r] : [];
+        } catch {
+          return [];
+        }
+      });
 
       setResumes(parsedResumes || []);
       setLoadingResumes(false);
@@ -44,7 +50,7 @@ export default function Home() {
     <Navbar />
 
     <section className="main-section">
-      <div className="page-heading py-16">
+      <div className="page-heading py-16 max-sm:py-6">
         <h1>Track Your Applications & Resume Ratings</h1>
         {!loadingResumes && resumes?.length === 0 ? (
             <h2>No resumes found. Upload your first resume to get feedback.</h2>

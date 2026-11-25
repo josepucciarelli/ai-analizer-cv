@@ -47,8 +47,8 @@ const CategoryHeader = ({
     categoryScore: number;
 }) => {
     return (
-        <div className="flex flex-row gap-4 items-center py-2">
-            <p className="text-2xl font-semibold">{title}</p>
+        <div className="flex flex-row flex-wrap gap-3 items-center py-2">
+            <p className="text-2xl max-sm:text-lg font-semibold">{title}</p>
             <ScoreBadge score={categoryScore} />
         </div>
     );
@@ -61,17 +61,17 @@ const CategoryContent = ({
 }) => {
     return (
         <div className="flex flex-col gap-4 items-center w-full">
-            <div className="bg-gray-50 w-full rounded-lg px-5 py-4 grid grid-cols-2 gap-4">
+            <div className="bg-gray-50 w-full rounded-lg px-5 py-4 max-sm:px-3 grid grid-cols-2 max-sm:grid-cols-1 gap-4 max-sm:gap-3">
                 {tips.map((tip, index) => (
-                    <div className="flex flex-row gap-2 items-center" key={index}>
+                    <div className="flex flex-row gap-2 items-start" key={index}>
                         <img
                             src={
                                 tip.type === "good" ? "/icons/check.svg" : "/icons/warning.svg"
                             }
                             alt="score"
-                            className="size-5"
+                            className="size-5 mt-0.5 shrink-0"
                         />
-                        <p className="text-xl text-gray-500 ">{tip.tip}</p>
+                        <p className="text-xl max-sm:text-base text-gray-500">{tip.tip}</p>
                     </div>
                 ))}
             </div>
@@ -80,13 +80,13 @@ const CategoryContent = ({
                     <div
                         key={index + tip.tip}
                         className={cn(
-                            "flex flex-col gap-2 rounded-2xl p-4",
+                            "flex flex-col gap-2 rounded-2xl p-4 max-sm:p-3",
                             tip.type === "good"
                                 ? "bg-green-50 border border-green-200 text-green-700"
                                 : "bg-yellow-50 border border-yellow-200 text-yellow-700"
                         )}
                     >
-                        <div className="flex flex-row gap-2 items-center">
+                        <div className="flex flex-row gap-2 items-start">
                             <img
                                 src={
                                     tip.type === "good"
@@ -94,11 +94,11 @@ const CategoryContent = ({
                                         : "/icons/warning.svg"
                                 }
                                 alt="score"
-                                className="size-5"
+                                className="size-5 mt-0.5 shrink-0"
                             />
-                            <p className="text-xl font-semibold">{tip.tip}</p>
+                            <p className="text-xl max-sm:text-base font-semibold">{tip.tip}</p>
                         </div>
-                        <p>{tip.explanation}</p>
+                        <p className="max-sm:text-sm">{tip.explanation}</p>
                     </div>
                 ))}
             </div>

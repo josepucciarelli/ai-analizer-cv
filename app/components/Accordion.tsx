@@ -160,7 +160,7 @@ export const AccordionContent: React.FC<AccordionContentProps> = ({
         ${className}
       `}
         >
-            <div className="px-4 py-3 ">{children}</div>
+            <div className="px-4 py-3 max-sm:px-1">{children}</div>
         </div>
     );
 };

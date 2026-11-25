@@ -5,10 +5,10 @@ import Summary from "~/components/Summary";
 import ATS from "~/components/ATS";
 import Details from "~/components/Details";
 
-export const meta = () => {[
+export const meta = () => ([
     { title: "Resumit | Review" },
     { name: "description", content: "Detailed overview of your resume" },
-]}
+])
 
 
 const Resume = () => {
@@ -56,13 +56,13 @@ const Resume = () => {
             <nav className="resume-nav">
                 <Link to='/' className="back-button">
                     <img src='/icons/back.svg' alt='logo' className="w-2.5 h-2.5" />
-                    <span className="text-gray-800 text-sm font-semibold">Back to Homepage</span>
+                    <span className="text-gray-800 text-sm font-semibold">Back<span className="max-sm:hidden"> to Homepage</span></span>
                 </Link>
             </nav>
             <div className='flex flex-row max-lg:flex-col-reverse'>
-                <section className="feedback-section bg-[url('/images/bg-small.svg') bg-cover h-[100vh] sticky top-0 items-center justify-center">
+                <section className="feedback-section bg-[url('/images/bg-small.svg')] bg-cover lg:h-[100vh] lg:sticky lg:top-0 items-center justify-center">
                     {imageUrl && resumeUrl && (
-                        <div className="animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-[90%] max-wxl:h-fit w-fit">
+                        <div className="animate-in fade-in duration-1000 gradient-border max-sm:m-0 lg:h-[90%] max-lg:h-fit w-fit max-lg:max-w-md max-lg:mx-auto">
                             <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
                                 <img
                                     src={imageUrl}
@@ -74,7 +74,7 @@ const Resume = () => {
                     )}
                 </section>
                 <section className="feedback-section">
-                    <h2 className="text-4xl font-bold !text-black">Resume Review</h2>
+                    <h2 className="text-4xl max-sm:text-2xl font-bold !text-black">Resume Review</h2>
                     {feedback ? (
                         <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
                             <Summary feedback={feedback} />
